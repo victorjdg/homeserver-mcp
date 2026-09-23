@@ -1,0 +1,17 @@
+# Official Model Context Protocol SDK (FastMCP + Streamable HTTP transport).
+# Pinned <2 on purpose: mcp 2.x renamed FastMCP to MCPServer and changed other
+# APIs; this app depends on the FastMCP class as it exists in the 1.x series.
+mcp>=1.30.0,<2
+
+# ASGI server used to run the app manually (wrapped in the auth middleware)
+# on 0.0.0.0:8000.
+uvicorn>=0.31.1
+
+# Docker SDK: used against the Podman socket (/run/podman/podman.sock),
+# which exposes a Docker-compatible API.
+docker>=7.1.0
+
+# Prometheus client: exposes /metrics (call counter per tool, duration, auth
+# failures) on its own HTTP port, separate from the MCP transport -- see the
+# comment in server.py for why it doesn't share a port with the ASGI app.
+prometheus-client>=0.21.0
